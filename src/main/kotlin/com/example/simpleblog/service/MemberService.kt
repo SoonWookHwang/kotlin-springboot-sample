@@ -1,0 +1,18 @@
+package com.example.simpleblog.service
+
+import com.example.simpleblog.domain.member.Member
+import com.example.simpleblog.domain.member.MemberRepository
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+
+
+@Service
+class MemberService(
+    private var memberRepository: MemberRepository
+) {
+
+    @Transactional(readOnly = true)
+    fun findAll() :MutableList<Member> {
+       return memberRepository.findAll()
+    }
+}

@@ -1,0 +1,21 @@
+<configuration>
+  <property name="CONSOLE_LOG_PATTERN"
+    value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%t]){faint} %clr(%-40.40logger{39}.%M){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+  <!--<property name="CONSOLE_LOG_PATTERN" value="%d %p [%c{1}] - %m%n"/>-->
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <withJansi>true</withJansi>
+    <encoder>
+<!--      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n</pattern>-->
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+<!--      <pattern>%msg%n</pattern>-->
+    </encoder>
+  </appender>
+
+  <root level="info">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
