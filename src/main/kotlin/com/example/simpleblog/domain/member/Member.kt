@@ -27,8 +27,25 @@ class Member(email: String, password: String, role: Role) : AuditingEntity() {
      *  JPA와 Kotlin의 궁합이 약간 좋지 않다
      */
 
+    companion object{
+        fun createFakeMember(memberId:Long) : Member{
+            val member = Member("","",Role.USER)
+            member.id = memberId
+            return member
+        }
+    }
+
 }
 
 enum class Role {
     USER, ADMIN
+}
+
+fun Member.toDto(): MemberRes{
+    return MemberRes(
+        id = this.id!!,
+        email = this.email,
+        password = this.password,
+        role = this.role
+    )
 }
